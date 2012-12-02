@@ -9,7 +9,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import de.kijimuna.reststack.presence.PresenceAggregator;
 import de.kijimuna.reststack.presence.PresenceSensor;
@@ -36,7 +38,8 @@ public class PresenceResource {
     public SensorData getPresence(@QueryParam("sensor") String sensorname) {
     	PresenceSensor sensor = sensors.getSensor(sensorname);
     	if(sensor==null)
-    		return null;
+    		throw new WebApplicationException(Status.BAD_REQUEST);
+
     	return presence.getData(sensor);
     }
 
