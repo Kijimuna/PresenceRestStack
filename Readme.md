@@ -1,15 +1,14 @@
 # Presence Sensor Rest Stack Example #
 
-This example uses a very simple REST Stack to manage some presence sensor 
+This example uses a very simple REST Stack to manage some presence sensors 
 (PIRI1 to PIRI5 and CAM1 to CAM5).
 
 Supported operations are
 * list all sensors
 * attach a sensor (use it to detect presence)
 * detach a sensor (don't use it anymore)
-* show attach date and last detected presence
-** for a single sensor
-** for all sensors
+* show attach date and last detected presence for a single sensor
+* show attach date and last detected presence for all sensors
 
 
 ## Example ##
