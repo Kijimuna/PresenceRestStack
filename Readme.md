@@ -14,13 +14,13 @@ Supported operations are
 
 ## Example ##
 
-$ curl -i -H "Content-Type: application/json; charset=UTF-8" -X GET http://127.0.0.1:8080/rest/presence/
-HTTP/1.1 200 OK
-Content-Type: application/json
-Transfer-Encoding: chunked
-Server: Jetty(7.6.7.v20120910)
-{}
-
+	$ curl -i -H "Content-Type: application/json; charset=UTF-8" -X GET http://127.0.0.1:8080/rest/presence/
+	HTTP/1.1 200 OK
+	Content-Type: application/json
+	Transfer-Encoding: chunked
+	Server: Jetty(7.6.7.v20120910)
+	{}
+	
 	$ curl -i -H "Content-Type: application/json; charset=UTF-8" -X GET http://127.0.0.1:8080/rest/sensors
 	HTTP/1.1 200 OK
 	Content-Type: application/json
