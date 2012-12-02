@@ -49,7 +49,8 @@ Server: Jetty(7.6.7.v20120910)
 	Server: Jetty(7.6.7.v20120910)
 	"CAM6 is no valid sensor!"
 	
-	$ curl -i -H "Content-Type: application/json; charset=UTF-8" -X GET http://127.0.0.1:8080/rest/presence/                HTTP/1.1 200 OK
+	$ curl -i -H "Content-Type: application/json; charset=UTF-8" -X GET http://127.0.0.1:8080/rest/presence/
+	HTTP/1.1 200 OK
 	Content-Type: application/json
 	Transfer-Encoding: chunked
 	Server: Jetty(7.6.7.v20120910)
@@ -73,5 +74,4 @@ Server: Jetty(7.6.7.v20120910)
 	Transfer-Encoding: chunked
 	Server: Jetty(7.6.7.v20120910)
 	{"PIRI3":{"attachDate":1354455810968,"lastPresenceDate":1354455840000},"CAM5":{"attachDate":1354455819359,"lastPresenceDate":1354455840000}}
-	Kobold@fish /d/_work_/_projects_/_java_/RestStack Exercise
 
