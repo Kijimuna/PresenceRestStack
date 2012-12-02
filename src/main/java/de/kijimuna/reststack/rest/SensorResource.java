@@ -3,13 +3,12 @@ package de.kijimuna.reststack.rest;
 import java.util.Map;
 
 import javax.annotation.concurrent.ThreadSafe;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response.Status;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
@@ -36,24 +35,27 @@ public class SensorResource {
         this.presenceAggregator = presenceAggregator;
     }
 
-    //TODO this changes state and shut rather be a post
+
+    @PUT
     @Path("/attach")
-    @GET
-    public Map<String, SensorData> attach(@QueryParam("sensor") String sensorname) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Map<String, SensorData> attach(String sensorname) {
     	PresenceSensor sensor = sensors.getSensor(sensorname);
     	if(sensor==null)
-    		throw new WebApplicationException(Status.BAD_REQUEST);
+    		throw new InvalidSensorWebAppException(sensorname);
+
+    	presenceAggregator.attachSensor(sensor);
     	return presenceAggregator.getSnapshot();
     }
 
-    //TODO this changes state and shut rather be a post
+    @PUT
     @Path("/detach")
-    @GET
-    public Map<String, SensorData> detach(@QueryParam("sensor") String sensorname) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Map<String, SensorData> detach(String sensorname) {
     	PresenceSensor sensor = sensors.getSensor(sensorname);
     	if(sensor==null)
-    		throw new WebApplicationException(Status.BAD_REQUEST);
-    	
+    		throw new InvalidSensorWebAppException(sensorname);
+
     	presenceAggregator.detachSensor(sensor);
     	return presenceAggregator.getSnapshot();
     }
